@@ -65,25 +65,32 @@ spec:
           - name: MYSQL_PASSWORD
             value: "uglySEA62"
 ---
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  annotations:
-    spec.ingressClassName: traefik
-  name: bookstack-ingress
-  namespace: default
-spec:
-  rules:
-    - host: bookstack.17042021.xyz
-      http:
-        paths:
-        - path: /
-          pathType: Prefix
-          backend:
-            service:
-              name: bookstack-service
-              port:
-                number: 80
+#apiVersion: networking.k8s.io/v1
+#kind: Ingress
+#metadata:
+#  annotations:
+#    spec.ingressClassName: traefik
+#    cert-manager.io/cluster-issuer: letsencrypt-staging
+#  name: bookstack-ingress
+#  namespace: default
+#spec:
+#  rules:
+#    - host: bookstack.17042021.xyz
+#      http:
+#        paths:
+#        - path: /
+#          pathType: Prefix
+#          backend:
+#            service:
+#              name: bookstack-service
+#              port:
+#                number: 80
+#  tls:
+#  - hosts:
+#    - bookstack.17042021.xyz
+#    - bookstack.thedc.space
+#    - bookstack.dogsbody.work
+#    secretName: bookstack-cert
 
 ---
 apiVersion: v1

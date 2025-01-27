@@ -1,0 +1,17 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: bookstack
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-staging
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`bookstack.17042021.xyz`)
+      kind: Rule
+      services:
+        - name: bookstack-service
+          port: 80
+  tls:
+    secretName: bookstack-cert
